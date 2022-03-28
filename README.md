@@ -6,16 +6,6 @@
 
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
-> 插件由两部分组成：
-  - 1.安装C/C++开发的`LyScript.dp32`组件包
-  - 2.安装Python开发的`LyScript32.py`接口包
-
-> 插件工作原理:
- - LyScript 插件运行后或在本机开启端口6666，并绑定到第一张网卡上（为了安全起见，目前只能连接本机，后期增加）
- - 用户在远程调试之前，需要通过`dbg.connect()`函数连接到对端，连接后会建立持久会话，用户不退出则保持连接状态。
- - 在会话内通过Socket远程通信，执行各种命令参数的获取。
- - 执行结束后需要调用`dbg.close()`关闭该会话，如果不关闭则py代码运行结束会自动强制中断会话。
-
 安装插件:
  - 执行插件安装：`pip install lyscript32` 或者 `pip install lyscript64` 分别安装两个版本 <br>
  - 32位插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
@@ -82,9 +72,7 @@ if __name__ == "__main__":
 ```
 如果您使用的是64位插件，则寄存器的支持范围将变为E系列加R系列。
 
-可用范围如下：
-
-"DR0", "DR1", "DR2", "DR3", "DR6", "DR7", "EAX", "AX", "AH", "AL", "EBX", "BX", "BH", "BL", "ECX", "CX", "CH", "CL", "EDX", "DX", "DH", "DL", "EDI", "DI", "ESI", "SI", "EBP", "BP", "ESP", "SP", "EIP", "RAX", "RBX", "RCX", "RDX", "RSI", "SIL", "RDI", "DIL", "RBP", "BPL", "RSP", "SPL", "RIP", "R8", "R8D", "R8W", "R8B", "R9", "R9D", "R9W", "R9B", "R10", "R10D", "R10W", "R10B", "R11", "R11D", "R11W", "R11B", "R12", "R12D", "R12W", "R12B", "R13", "R13D", "R13W", "R13B", "R14", "R14D", "R14W", "R14B", "R15", "R15D", "R15W", "R15B"
+可用范围扩展： "DR0", "DR1", "DR2", "DR3", "DR6", "DR7", "EAX", "AX", "AH", "AL", "EBX", "BX", "BH", "BL", "ECX", "CX", "CH", "CL", "EDX", "DX", "DH", "DL", "EDI", "DI", "ESI", "SI", "EBP", "BP", "ESP", "SP", "EIP", "RAX", "RBX", "RCX", "RDX", "RSI", "SIL", "RDI", "DIL", "RBP", "BPL", "RSP", "SPL", "RIP", "R8", "R8D", "R8W", "R8B", "R9", "R9D", "R9W", "R9B", "R10", "R10D", "R10W", "R10B", "R11", "R11D", "R11W", "R11B", "R12", "R12D", "R12W", "R12B", "R13", "R13D", "R13W", "R13B", "R14", "R14D", "R14W", "R14B", "R15", "R15D", "R15W", "R15B"
 
 ```Python
 from LyScript64 import MyDebug
