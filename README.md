@@ -629,6 +629,8 @@ if __name__ == "__main__":
  - 无参数传递
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -645,6 +647,8 @@ if __name__ == "__main__":
  - 无参数传递
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -660,6 +664,8 @@ if __name__ == "__main__":
  - 无参数传递
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -676,6 +682,8 @@ if __name__ == "__main__":
  - get_peb_address() 传入参数是进程ID
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -732,6 +740,8 @@ if __name__ == "__main__":
  - 参数1：日志内容
 
 ```Pythohn
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
