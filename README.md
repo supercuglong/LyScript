@@ -445,6 +445,7 @@ if __name__ == "__main__":
  - read_memory_byte() 读字节
  - read_memory_word() 读word
  - read_memory_dword() 读dword
+ - read_memory_qword() 读qword （仅支持64位）
  - read_memory_ptr() 读指针
 
 ```Python
@@ -481,6 +482,7 @@ if __name__ == "__main__":
  - write_memory_byte() 写字节
  - write_memory_word() 写word
  - write_memory_dword() 写dword
+ - write_memory_qword() 写qword （仅支持64位）
  - write_memory_ptr() 写指针
 
 ```Python
