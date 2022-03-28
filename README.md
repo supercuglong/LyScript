@@ -16,9 +16,10 @@
  - 在会话内通过Socket远程通信，执行各种命令参数的获取。
  - 执行结束后需要调用`dbg.close()`关闭该会话，如果不关闭则py代码运行结束会自动强制中断会话。
 
-> 安装插件:
- - 1.执行插件安装：`pip install lyscript32`<br>
- - 2.插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
+安装插件:
+ - 执行插件安装：`pip install lyscript32` 或者 `pip install lyscript64` 分别安装两个版本 <br>
+ - 32位插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
+ - 64位插件下载地址: https://cdn.lyshark.com/software/LyScript64.zip
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
 
