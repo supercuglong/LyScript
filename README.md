@@ -7,7 +7,7 @@
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，解决逆向工作者分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码。
 
 安装插件:
- - 执行插件安装：`pip install lyscript32` 或者 `pip install lyscript64` 分别安装对应的包 <br>
+ - 对应Python包安装: `pip install lyscript32` 或者 `pip install lyscript64` 安装对应包 <br>
  - 32位插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
  - 64位插件下载地址: https://cdn.lyshark.com/software/LyScript64.zip
 
