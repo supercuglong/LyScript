@@ -2,7 +2,7 @@
 
 <img width="100" src="https://github.com/x64dbg/x64dbg/raw/development/src/bug_black.png"/>
 
-[![BountySource](https://www.bountysource.com/badge/team?team_id=18188&style=raised)](https://github.com/sponsors/mrexodia) [![Build status](https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true)](https://ci.appveyor.com/project/mrexodia/x64dbg) [![Open Source Helpers](https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg)](https://www.codetriage.com/x64dbg/x64dbg) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg)](http://translate.x64dbg.com) [![Download x64dbg](https://img.shields.io/sourceforge/dm/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
+[![BountySource](https://www.bountysource.com/badge/team?team_id=18188&style=raised)](https://github.com/lyshark/LyScript) [![Build status](https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true)](https://github.com/lyshark/LyScript) [![Open Source Helpers](https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg)](https://github.com/lyshark/LyScript) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg)](https://github.com/lyshark/LyScript) [![Download x64dbg](https://img.shields.io/sourceforge/dm/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
 
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，解决逆向工作者分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码。
 
