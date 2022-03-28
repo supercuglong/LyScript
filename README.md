@@ -4,7 +4,7 @@
 
 [![BountySource](https://www.bountysource.com/badge/team?team_id=18188&style=raised)](https://github.com/sponsors/mrexodia) [![Build status](https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true)](https://ci.appveyor.com/project/mrexodia/x64dbg) [![Open Source Helpers](https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg)](https://www.codetriage.com/x64dbg/x64dbg) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg)](http://translate.x64dbg.com) [![Download x64dbg](https://img.shields.io/sourceforge/dm/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
 
-一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，你可以将x64dbg扔到虚拟机内，然后在外面通过pycharm编程，控制内部虚拟机中的x64DBG反汇编分析或者执行各种操作，该插件我暂时将其命名为`LyScript.dp32`吧。
+一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
 > 插件由两部分组成：
   - 1.安装C/C++开发的`LyScript.dp32`组件包
@@ -15,9 +15,6 @@
  - 用户在远程调试之前，需要通过`dbg.connect()`函数连接到对端，连接后会建立持久会话，用户不退出则保持连接状态。
  - 在会话内通过Socket远程通信，执行各种命令参数的获取。
  - 执行结束后需要调用`dbg.close()`关闭该会话，如果不关闭则py代码运行结束会自动强制中断会话。
-
-> 开发插件的初衷：
- - 解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
 > 安装插件:
  - 1.执行插件安装：`pip install lyscript32`<br>
