@@ -15,7 +15,8 @@
 开发插件的初衷：
  - 解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
-> 1.执行插件安装：`pip install lyscript32`
+<br>
+> 1.执行插件安装：`pip install lyscript32`<br>
 > 2.插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
