@@ -1,4 +1,4 @@
-# LyScript32
+# x64dbg 32位插件下载
 
 <br>
 LyScript 插件下载地址
