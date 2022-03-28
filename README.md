@@ -1,4 +1,4 @@
-# x64dbg 32位插件下载
+# x64dbg 自动化插件
 
 <img width="100" src="https://github.com/x64dbg/x64dbg/raw/development/src/bug_black.png"/>
 
