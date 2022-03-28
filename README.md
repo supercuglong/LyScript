@@ -1,15 +1,5 @@
 # x64dbg 32位插件下载
 
-<br>
-LyScript 插件下载地址
-<br>
-32位插件下载：https://cdn.lyshark.com/software/LyScript32.zip
-<br>
-64位插件下载：（正在开发中）
-
-
-
-
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，你可以将x64dbg扔到虚拟机内，然后在外面通过pycharm编程，控制内部虚拟机中的x64DBG反汇编分析或者执行各种操作，该插件我暂时将其命名为`LyScript.dp32`吧。
 
  - 插件由两部分组成：
@@ -25,11 +15,9 @@ LyScript 插件下载地址
 开发插件的初衷：
  - 解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
-安装LyScript32.py只需要执行`pip install lyscript32`即可将插件的连接器安装到项目中.
- - PyPI仓库地址: https://pypi.org/project/LyScript32/1.0.5/#files
 
-其次需安装x64dbg的驱动插件，该插件目前只支持32位版本的x64dbg调试器
- - 插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
+1.执行插件安装：`pip install lyscript32`
+2.插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
 
@@ -64,9 +52,6 @@ if __name__ == "__main__":
 ```
 
 链接成功返回1，失败返回0
-
-![](https://img2022.cnblogs.com/blog/1379525/202203/1379525-20220327192349055-950985070.png)
-
 <br>
 
 ### 寄存器类
