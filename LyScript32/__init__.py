@@ -22,14 +22,14 @@ class MyStruct(Structure):
         ("Text", c_char * 4096)
     ]
     def pack(self):
-        buffer = struct.pack("< 256s 256s 256s 256s 256s i i i i i i i 4096s",self.Command_String_A,self.Command_String_B,self.Command_String_C,self.Command_String_D,self.Command_String_E,
+        buffer = struct.pack("<256s256s256s256s256siiiiiii4096s",self.Command_String_A,self.Command_String_B,self.Command_String_C,self.Command_String_D,self.Command_String_E,
                              self.Command_int_A,self.Command_int_B,self.Command_int_C,self.Command_int_D,self.Command_int_E,
                              self.Count,self.Flag,self.Text)
         return buffer
     def unpack(self,buffer):
         (self.Command_String_A,self.Command_String_B,self.Command_String_C,self.Command_String_D,self.Command_String_E,
          self.Command_int_A,self.Command_int_B,self.Command_int_C,self.Command_int_D,self.Command_int_E,
-         self.Count,self.Flag,self.Text) = struct.unpack("< 256s 256s 256s 256s 256s i i i i i i i 4096s",buffer)
+         self.Count,self.Flag,self.Text) = struct.unpack("<256s256s256s256s256siiiiiii4096s",buffer)
 
 class MyDebug(object):
     def __init__(self,address="127.0.0.1",port=6666):
