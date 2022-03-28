@@ -2,22 +2,22 @@
 
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg的行为，实现远程调试，你可以将x64dbg扔到虚拟机内，然后在外面通过pycharm编程，控制内部虚拟机中的x64DBG反汇编分析或者执行各种操作，该插件我暂时将其命名为`LyScript.dp32`吧。
 
- - 插件由两部分组成：
+> 插件由两部分组成：
   - 1.安装C/C++开发的`LyScript.dp32`组件包
   - 2.安装Python开发的`LyScript32.py`接口包
 
-插件工作原理:
+> 插件工作原理:
  - LyScript 插件运行后或在本机开启端口6666，并绑定到第一张网卡上（为了安全起见，目前只能连接本机，后期增加）
  - 用户在远程调试之前，需要通过`dbg.connect()`函数连接到对端，连接后会建立持久会话，用户不退出则保持连接状态。
  - 在会话内通过Socket远程通信，执行各种命令参数的获取。
  - 执行结束后需要调用`dbg.close()`关闭该会话，如果不关闭则py代码运行结束会自动强制中断会话。
 
-开发插件的初衷：
+> 开发插件的初衷：
  - 解决逆向工作者，分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码，解放双手。
 
-<br>
-> 1.执行插件安装：`pip install lyscript32`<br>
-> 2.插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
+> 安装插件:
+<br>1.执行插件安装：`pip install lyscript32`<br>
+<br>2.插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
 
