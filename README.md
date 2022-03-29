@@ -1,6 +1,6 @@
 # x64dbg 自动化控制插件
 
-<img width="100" src="https://github.com/x64dbg/x64dbg/raw/development/src/bug_black.png"/>
+<img width="100" src="https://cdn.lyshark.com/archive/LyScript/bug_black.png"/>
 
 [![BountySource](https://www.bountysource.com/badge/team?team_id=18188&style=raised)](https://github.com/lyshark/LyScript) [![Build status](https://ci.appveyor.com/api/projects/status/h1j489qa1mx67e0h?svg=true)](https://github.com/lyshark/LyScript) [![Open Source Helpers](https://www.codetriage.com/x64dbg/x64dbg/badges/users.svg)](https://github.com/lyshark/LyScript) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/x64dbg/localized.svg)](https://github.com/lyshark/LyScript) [![Download x64dbg](https://img.shields.io/sourceforge/dm/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
 
