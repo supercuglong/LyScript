@@ -1,7 +1,7 @@
 # x64dbg 自动化控制插件
 
 <div align=center>
-  <img width="100" src="https://cdn.lyshark.com/archive/LyScript/bug_black.png"/> 
+  <img width="100" src="https://cdn.lyshark.com/archive/LyScript/bug_black.png"/> <tr>
   <img width="107" src="https://avatars.githubusercontent.com/u/1525981?s=200&v=4"/>
  <br> <br> <br>
 
