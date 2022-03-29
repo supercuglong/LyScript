@@ -2,11 +2,11 @@
 
 <div align=center>
   <img width="100" src="https://cdn.lyshark.com/archive/LyScript/bug_black.png"/>
- <br>
+ <br> <br> <br>
 
 [![BountySource](https://cdn.lyshark.com/archive/LyScript/team.svg)](https://github.com/lyshark/LyScript) [![Build status](https://cdn.lyshark.com/archive/LyScript/build.svg)](https://github.com/lyshark/LyScript) [![Open Source Helpers](https://cdn.lyshark.com/archive/LyScript/users.svg)](https://github.com/lyshark/LyScript) [![Crowdin](https://cdn.lyshark.com/archive/LyScript/email.svg)](mailto:me@lyshark.com) [![Download x64dbg](https://cdn.lyshark.com/archive/LyScript/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
 
-  <br><br>
+<br><br>
 一个 X64dbg 自动化控制插件，通过Python控制X64dbg，实现远程调试，解决逆向工作者分析漏洞，寻找指令片段，原生脚本不够强大的问题，与Python结合利用Python的灵活性，提高分析效率，通过自动化控制调试器分析代码。
   
 </div>
