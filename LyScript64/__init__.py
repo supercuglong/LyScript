@@ -3,7 +3,6 @@ import socket
 import struct
 import time
 from ctypes import *
-
 class MyStruct(Structure):
     _pack_ = 1
     _fields_ = [
@@ -29,7 +28,6 @@ class MyStruct(Structure):
         (self.Command_String_A,self.Command_String_B,self.Command_String_C,self.Command_String_D,self.Command_String_E,
          self.Command_int_A,self.Command_int_B,self.Command_int_C,self.Command_int_D,self.Command_int_E,
          self.Count,self.Flag) = struct.unpack("< 256s 256s 256s 256s 256s q q q q q i i",buffer)
-
 class MyDebug(object):
     def __init__(self,address="127.0.0.1",port=6666):
         self.address = address
@@ -238,7 +236,6 @@ class MyDebug(object):
         ptr = MyStruct()
         ptr.Command_String_A = "ReadMemoryByte".encode("utf8")
         ptr.Command_int_A = address
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             recv_address = recv_struct.Command_int_A
@@ -286,7 +283,6 @@ class MyDebug(object):
         ptr = MyStruct()
         ptr.Command_String_A = "ReadMemoryPtr".encode("utf8")
         ptr.Command_int_A = address
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             recv_address = recv_struct.Command_int_A
@@ -311,7 +307,6 @@ class MyDebug(object):
         ptr.Command_String_A = "WriteMemoryWord".encode("utf8")
         ptr.Command_int_A = address
         ptr.Command_int_B = value
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return True
@@ -380,7 +375,6 @@ class MyDebug(object):
     def get_local_base(self):
         ptr = MyStruct()
         ptr.Command_String_A = "GetLocalBase".encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             base_addr = recv_struct.Command_int_A
@@ -402,7 +396,6 @@ class MyDebug(object):
     def get_local_size(self):
         ptr = MyStruct()
         ptr.Command_String_A = "GetLocalSize".encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             base_addr = recv_struct.Command_int_A
@@ -430,7 +423,6 @@ class MyDebug(object):
             ptr.Command_String_A = "GetModuleBaseFromFunction".encode("utf8")
             ptr.Command_String_B = module.encode("utf8")
             ptr.Command_String_C = function.encode("utf8")
-
             recv_struct = self.send_recv_struct(ptr)
             if recv_struct.Flag == 1:
                 return recv_struct.Command_int_A
@@ -472,7 +464,6 @@ class MyDebug(object):
             send_buffer = send_struct.pack()
             self.sock.send(send_buffer)
             recv_count = int.from_bytes(self.sock.recv(4), byteorder="little", signed=False)
-
             if recv_count != 0:
                 for index in range(0,recv_count):
                     dic = {"name": None, "iat_va": None, "iat_rva": None}
@@ -486,7 +477,6 @@ class MyDebug(object):
                 return False
         except Exception:
             return False
-
     def get_module_from_export(self,module_name):
         all_module = []
         send_struct = MyStruct()
@@ -496,19 +486,14 @@ class MyDebug(object):
             send_buffer = send_struct.pack()
             self.sock.send(send_buffer)
             recv_count = int.from_bytes(self.sock.recv(4), byteorder="little", signed=False)
-
             if recv_count != 0:
                 for index in range(0,recv_count):
                     dic = {"name": None, "iat_va": None, "iat_rva": None}
-
                     recv_buffer = self.sock.recv(528)
                     (name,va,rva) = struct.unpack("< 512s q q", recv_buffer)
-
                     decode_name = name.decode("utf8").replace('\0','')
-
                     dic.update({"name": decode_name, "va": va, "rva": rva})
                     all_module.append(dic)
-
                 return all_module
             else:
                 return False
@@ -522,19 +507,14 @@ class MyDebug(object):
             send_buffer = send_struct.pack()
             self.sock.send(send_buffer)
             recv_count = int.from_bytes(self.sock.recv(4), byteorder="little", signed=False)
-
             if recv_count != 0:
                 for index in range(0,recv_count):
                     dic = {"addr": None, "name": None, "size": None}
-
                     recv_buffer = self.sock.recv(272)
                     (address,name,size) = struct.unpack("< q 256s q", recv_buffer)
-
                     decode_name = name.decode("utf8").replace('\0','')
-
                     dic.update({"addr": address, "name": decode_name, "size": size})
                     all_section.append(dic)
-
                 return all_section
             else:
                 return False
@@ -578,19 +558,14 @@ class MyDebug(object):
             send_buffer = send_struct.pack()
             self.sock.send(send_buffer)
             recv_count = int.from_bytes(self.sock.recv(4), byteorder="little", signed=False)
-
             if recv_count != 0:
                 for index in range(0,recv_count):
                     dic = {"thread_number": None, "thread_id": None, "thread_name": None, "local_base": None, "start_address": None}
-
                     recv_buffer = self.sock.recv(280)
                     (number,id,name,local_base,start_addr) = struct.unpack("< i i 256s q q", recv_buffer)
-
                     decode_name = name.decode("utf8").replace('\0','')
-
                     dic.update({"thread_number": number, "thread_id": id, "thread_name": decode_name, "local_base": local_base, "start_address": start_addr})
                     all_thread.append(dic)
-
                 return all_thread
             else:
                 return False
@@ -609,7 +584,6 @@ class MyDebug(object):
     def get_process_id(self):
         ptr = MyStruct()
         ptr.Command_String_A = "GetProcessID".encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return recv_struct.Command_int_A
@@ -631,7 +605,6 @@ class MyDebug(object):
         ptr = MyStruct()
         ptr.Command_String_A = "GetPebAddress".encode("utf8")
         ptr.Command_int_A = process_id
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return recv_struct.Command_int_A
@@ -641,10 +614,8 @@ class MyDebug(object):
     def set_comment_notes(self,address,note):
         ptr = MyStruct()
         ptr.Command_String_A = "SetCommentNotes".encode("utf8")
-
         ptr.Command_int_A = address
         ptr.Command_String_B = note.encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return True
@@ -655,7 +626,6 @@ class MyDebug(object):
         ptr = MyStruct()
         ptr.Command_String_A = "SetLoger".encode("utf8")
         ptr.Command_String_B = log.encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return True
@@ -666,7 +636,6 @@ class MyDebug(object):
         ptr = MyStruct()
         ptr.Command_String_A = "RumCmdExec".encode("utf8")
         ptr.Command_String_B = cmd.encode("utf8")
-
         recv_struct = self.send_recv_struct(ptr)
         if recv_struct.Flag == 1:
             return True
