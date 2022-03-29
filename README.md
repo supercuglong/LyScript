@@ -242,6 +242,8 @@ if __name__ == "__main__":
 断点类型可用范围：[类型 0 = HardwareAccess / 1 = HardwareWrite / 2 = HardwareExecute]
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug(address="127.0.0.1",port=6666)
     connect_flag = dbg.connect()
@@ -261,6 +263,8 @@ if __name__ == "__main__":
 断点类型可用范围：[类型 0 = HardwareAccess / 1 = HardwareWrite / 2 = HardwareExecute]
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug(address="127.0.0.1",port=6666)
     connect_flag = dbg.connect()
@@ -414,6 +418,8 @@ if __name__ == "__main__":
  - 无参数传递
 
  ```Python
+ from LyScript32 import MyDebug
+ 
 if __name__ == "__main__":
     dbg = MyDebug(address="127.0.0.1",port=6666)
     connect_flag = dbg.connect()
@@ -476,6 +482,8 @@ if __name__ == "__main__":
  - write_memory_ptr() 写指针
 
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
