@@ -2,7 +2,7 @@
 
 <div align=center>
   <img width="100" src="https://cdn.lyshark.com/archive/LyScript/bug_black.png"/> 
-  <img width="100" src="https://avatars.githubusercontent.com/u/1525981?s=200&v=4"/>
+  <img width="120" src="https://avatars.githubusercontent.com/u/1525981?s=200&v=4"/>
  <br> <br> <br>
 
 [![BountySource](https://cdn.lyshark.com/archive/LyScript/team.svg)](https://github.com/lyshark/LyScript) [![Build status](https://cdn.lyshark.com/archive/LyScript/build.svg)](https://github.com/lyshark/LyScript) [![Open Source Helpers](https://cdn.lyshark.com/archive/LyScript/users.svg)](https://github.com/lyshark/LyScript) [![Crowdin](https://cdn.lyshark.com/archive/LyScript/email.svg)](mailto:me@lyshark.com) [![Download x64dbg](https://cdn.lyshark.com/archive/LyScript/x64dbg.svg)](https://sourceforge.net/projects/x64dbg/files/latest/download)
