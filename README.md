@@ -794,8 +794,9 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
+<br>
 
-### LyScript32位 1.0.7
+## LyScript 32位 1.0.7
 
 新版本与旧版本API有少许区别，在安装pip包时应制定为`pip install LyScript32==1.0.7`安装。
 
