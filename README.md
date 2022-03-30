@@ -842,7 +842,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-**check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False.
+**check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
@@ -858,7 +858,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-读入一条汇编指令
+**get_disasm_one_code() 函数:** 在用户指定的位置读入一条汇编指令，用户可根据需要对其进行判断。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
@@ -873,7 +873,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-获取操作数
+**get_disasm_operand_code() 函数:** 用于获取汇编指令中的操作数，例如`jmp 0x0401000`其操作数就是`0x0401000`。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
@@ -888,7 +888,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-得到机器码长度
+**get_disasm_operand_size() 函数:** 用于得当前内存地址下汇编代码的机器码长度。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
@@ -904,13 +904,11 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-
-GetLocalProtect 获取内存属性传值（更新）
+**get_local_protect() 函数:** 获取内存属性传值，该函数进行更新，取消了只能得到EIP所指的位置的内存属性，用户可随意检测。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
-
 
     eip = dbg.get_register("eip")
     print(eip)
@@ -919,7 +917,7 @@ if __name__ == "__main__":
     print(ref)
 ```
 
-setlocalprote 设置内存属性
+**set_local_protect() 函数:** 新增设置内存属性函数，传入eip内存地址，设置属性32，以及设置内存长度1024即可。
 ```Python
 if __name__ == "__main__":
     dbg = MyDebug()
