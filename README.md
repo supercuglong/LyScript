@@ -13,7 +13,8 @@
 
 
 安装插件:
- - 对应Python包安装 `pip install lyscript32` 或者 `pip install lyscript64` 安装对应包
+ - 对应Python包安装 `pip install LyScript32==1.0.5` 或者 `pip install lyscript64` 安装对应包
+ 
  - 32位插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
  - 64位插件下载地址: https://cdn.lyshark.com/software/LyScript64.zip
 
