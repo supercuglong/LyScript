@@ -800,7 +800,7 @@ if __name__ == "__main__":
 
 新版本与旧版本API有少许区别，在安装pip包时应指定版本为`pip install LyScript32==1.0.7`安装。
 
- - 32位驱动下载地址：
+ - 新版32位驱动下载：https://cdn.lyshark.com/software/LyScript32_1.0.7.zip
 
 ### 新功能
 
@@ -813,8 +813,17 @@ if __name__ == "__main__":
 7.新增设置内存属性函数
 8.完全支持远程调试
 
+远程调试功能，用户需要确保机器IP地址可以互通，并在同一网段，如果是跨网段调试，则需要指定一个公网IP地址才可。
+
+
+
+
+
+
 **set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -828,6 +837,8 @@ if __name__ == "__main__":
 
 **delete_breakpoint() 函数:** 该函数是新增函数，传入一个内存地址，可取消一个内存断点。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -844,6 +855,8 @@ if __name__ == "__main__":
 
 **check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -860,6 +873,8 @@ if __name__ == "__main__":
 
 **get_disasm_one_code() 函数:** 在用户指定的位置读入一条汇编指令，用户可根据需要对其进行判断。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -875,6 +890,8 @@ if __name__ == "__main__":
 
 **get_disasm_operand_code() 函数:** 用于获取汇编指令中的操作数，例如`jmp 0x0401000`其操作数就是`0x0401000`。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -890,6 +907,8 @@ if __name__ == "__main__":
 
 **get_disasm_operand_size() 函数:** 用于得当前内存地址下汇编代码的机器码长度。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -906,6 +925,8 @@ if __name__ == "__main__":
 
 **get_local_protect() 函数:** 获取内存属性传值，该函数进行更新，取消了只能得到EIP所指的位置的内存属性，用户可随意检测。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
@@ -919,6 +940,8 @@ if __name__ == "__main__":
 
 **set_local_protect() 函数:** 新增设置内存属性函数，传入eip内存地址，设置属性32，以及设置内存长度1024即可。
 ```Python
+from LyScript32 import MyDebug
+
 if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
