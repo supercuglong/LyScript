@@ -813,5 +813,123 @@ if __name__ == "__main__":
 7.新增设置内存属性函数
 8.完全支持远程调试
 
+**set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
+
+    print("设置状态: {}".format(ref))
+    dbg.close()
+```
+
+**delete_breakpoint() 函数:** 该函数是新增函数，传入一个内存地址，可取消一个内存断点。
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
+    print("设置状态: {}".format(ref))
+
+    del_ref = dbg.delete_breakpoint(eip)
+    print("取消状态: {}".format(del_ref))
+
+    dbg.close()
+```
+
+**check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False.
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
+    print("设置状态: {}".format(ref))
+
+    is_check = dbg.check_breakpoint(4134331)
+    print("是否命中: {}".format(is_check))
+
+    dbg.close()
+```
+
+读入一条汇编指令
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    disasm = dbg.get_disasm_one_code(eip)
+    print("反汇编一条: {}".format(disasm))
+
+    dbg.close()
+```
+
+获取操作数
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    opcode = dbg.get_disasm_operand_code(eip)
+    print("操作数: {}".format(hex(opcode)))
+
+    dbg.close()
+```
+
+得到机器码长度
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    opcode = dbg.get_disasm_operand_size(eip)
+
+    print("机器码长度: {}".format(hex(opcode)))
+
+    dbg.close()
+```
 
 
+GetLocalProtect 获取内存属性传值（更新）
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    ref = dbg.get_local_protect(eip)
+    print(ref)
+```
+
+setlocalprote 设置内存属性
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    b = dbg.set_local_protect(eip,32,1024)
+    print("设置属性状态: {}".format(b))
+
+    dbg.close()
+```
