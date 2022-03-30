@@ -815,9 +815,11 @@ if __name__ == "__main__":
 
 远程调试功能，需要调试器与客户端在同一网段下，且防火墙放行6666端口才可访问到，如果x64dbg请求访问网络，请将其放行。
 
-![image](https://user-images.githubusercontent.com/52789403/160843704-3d5c2b66-60ee-492a-88d5-4fdbc0ac7021.png)
+![image](https://user-images.githubusercontent.com/52789403/160844020-da10fa4f-edaf-4048-8181-1285a0526e09.png)
 
+在python中连接时需要在`MyDebug()`初始化时传入远程IP地址，如不传递，则默认使用`127.0.0.1:6666`
 
+![image](https://user-images.githubusercontent.com/52789403/160844188-0270199c-181e-4900-b842-a24ea348a65f.png)
 
 **set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
 ```Python
