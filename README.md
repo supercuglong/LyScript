@@ -217,11 +217,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-**set_breakpoint() 函数:** 该函数可实现在指定内存区域内下断点操作，有两个参数需要传入。
-
- - 参数1：需要设置断点的地址
- - 参数2：[取消断点 True] [设置断点 False]
-
+**set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
 ```Python
 from LyScript32 import MyDebug
 
@@ -229,14 +225,45 @@ if __name__ == "__main__":
     dbg = MyDebug()
     connect_flag = dbg.connect()
 
-    for index in range(0,10):
-        eip = dbg.get_register("eip")
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
 
-        ref = dbg.set_breakpoint(eip,True)
-        print("断点设置状态: {}".format(ref))
+    print("设置状态: {}".format(ref))
+    dbg.close()
+```
 
-        dbg.set_debug("StepIn")
-        time.sleep(0.3)
+**delete_breakpoint() 函数:** 该函数是新增函数，传入一个内存地址，可取消一个内存断点。
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
+    print("设置状态: {}".format(ref))
+
+    del_ref = dbg.delete_breakpoint(eip)
+    print("取消状态: {}".format(del_ref))
+
+    dbg.close()
+```
+
+**check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False。
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    ref = dbg.set_breakpoint(eip)
+    print("设置状态: {}".format(ref))
+
+    is_check = dbg.check_breakpoint(4134331)
+    print("是否命中: {}".format(is_check))
 
     dbg.close()
 ```
@@ -539,6 +566,39 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
+
+**get_local_protect() 函数:** 获取内存属性传值，该函数进行更新，取消了只能得到EIP所指的位置的内存属性，用户可随意检测。
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    ref = dbg.get_local_protect(eip)
+    print(ref)
+```
+
+**set_local_protect() 函数:** 新增设置内存属性函数，传入eip内存地址，设置属性32，以及设置内存长度1024即可。
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    b = dbg.set_local_protect(eip,32,1024)
+    print("设置属性状态: {}".format(b))
+
+    dbg.close()
+```
+
 <br>
 
 ### 堆栈类
@@ -769,6 +829,9 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
+<br>
+
+### 反汇编函数
 
 **get_disasm_code() 函数:** 该函数主要用于对特定内存地址进行反汇编，传入两个参数。
 
@@ -791,83 +854,6 @@ if __name__ == "__main__":
 
     for ds in disasm_dict:
         print("地址: {} 反汇编: {}".format(hex(ds.get("addr")),ds.get("opcode")))
-
-    dbg.close()
-```
-<br>
-
-## LyScript 32位 1.0.7
-
-新版本与旧版本API有少许区别，在安装pip包时应指定版本为`pip install LyScript32==1.0.7`安装。
-
- - 新版32位驱动下载：https://cdn.lyshark.com/software/LyScript32_1.0.7.zip
-
-### 新功能
-
-1.设置普通断点与取消分离<br>
-2.新增断点命中检测函数<br>
-3.新增读入一条汇编指令<br>
-4.新增获取操作数<br>
-5.新增得到机器码长度<br>
-6.获取内存属性需要传值<br>
-7.新增设置内存属性函数<br>
-8.支持远程调试<br>
-
-远程调试功能，需要调试器与客户端在同一网段下，且防火墙放行6666端口才可访问到，如果x64dbg请求访问网络，请将其放行，外网调试只需要提供公网地址即可。
-
-![image](https://user-images.githubusercontent.com/52789403/160844020-da10fa4f-edaf-4048-8181-1285a0526e09.png)
-
-在python中连接时需要在`MyDebug()`初始化时传入远程IP地址，如不传递，则默认使用`127.0.0.1:6666`
-
-![image](https://user-images.githubusercontent.com/52789403/160844188-0270199c-181e-4900-b842-a24ea348a65f.png)
-
-**set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    ref = dbg.set_breakpoint(eip)
-
-    print("设置状态: {}".format(ref))
-    dbg.close()
-```
-
-**delete_breakpoint() 函数:** 该函数是新增函数，传入一个内存地址，可取消一个内存断点。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    ref = dbg.set_breakpoint(eip)
-    print("设置状态: {}".format(ref))
-
-    del_ref = dbg.delete_breakpoint(eip)
-    print("取消状态: {}".format(del_ref))
-
-    dbg.close()
-```
-
-**check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    ref = dbg.set_breakpoint(eip)
-    print("设置状态: {}".format(ref))
-
-    is_check = dbg.check_breakpoint(4134331)
-    print("是否命中: {}".format(is_check))
 
     dbg.close()
 ```
@@ -924,37 +910,7 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-**get_local_protect() 函数:** 获取内存属性传值，该函数进行更新，取消了只能得到EIP所指的位置的内存属性，用户可随意检测。
-```Python
-from LyScript32 import MyDebug
 
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    print(eip)
-
-    ref = dbg.get_local_protect(eip)
-    print(ref)
-```
-
-**set_local_protect() 函数:** 新增设置内存属性函数，传入eip内存地址，设置属性32，以及设置内存长度1024即可。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-    
-    eip = dbg.get_register("eip")
-    print(eip)
-
-    b = dbg.set_local_protect(eip,32,1024)
-    print("设置属性状态: {}".format(b))
-
-    dbg.close()
-```
 
 
 测试功能，如下，还在开发中
