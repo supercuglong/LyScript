@@ -217,7 +217,29 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-**set_breakpoint() 函数:** 与低版本不同，本次更新将设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
+**is_debugger() /is_running() 函数:** is_debugger可用于验证当前调试器是否处于调试状态，is_running则用于验证是否在运行。
+
+- 无参数传递
+
+```Python
+if __name__ == "__main__":
+from LyScript32 import MyDebug
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    ref = dbg.is_debugger()
+    print(ref)
+
+    ref = dbg.is_running()
+    print(ref)
+
+    dbg.close()
+```
+
+**set_breakpoint() 函数:** 设置断点与取消断点进行了分离，设置断点只需要传入十进制内存地址。
+
+ - 参数1：传入内存地址（十进制）
+ 
 ```Python
 from LyScript32 import MyDebug
 
@@ -232,7 +254,10 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
-**delete_breakpoint() 函数:** 该函数是新增函数，传入一个内存地址，可取消一个内存断点。
+**delete_breakpoint() 函数:** 该函数传入一个内存地址，可取消一个内存断点。
+
+ - 参数1：传入内存地址（十进制）
+
 ```Python
 from LyScript32 import MyDebug
 
@@ -251,6 +276,9 @@ if __name__ == "__main__":
 ```
 
 **check_breakpoint() 函数:** 用于检查下过的断点是否被命中，命中返回True否则返回False。
+
+ - 参数1：传入内存地址（十进制）
+
 ```Python
 from LyScript32 import MyDebug
 
@@ -460,6 +488,75 @@ if __name__ == "__main__":
 
     ref = dbg.get_section()
     print(ref)
+
+    dbg.close()
+```
+
+**get_base_from_address() 函数:** 根据传入的内存地址得到该模块首地址。
+
+ - 参数1：传入内存地址（十进制）
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    eip = dbg.get_register("eip")
+
+    ref = dbg.get_base_from_address(eip)
+    print("模块首地址: {}".format(hex(ref)))
+```
+
+**get_base_from_name() 函数:** 根据传入的模块名得到该模块所在内存首地址。
+
+ - 参数1：传入模块名
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    eip = dbg.get_register("eip")
+
+    ref_base = dbg.get_base_from_name("win32project.exe")
+    print("模块首地址: {}".format(hex(ref_base)))
+
+    dbg.close()
+```
+
+**get_oep_from_name() 函数:** 根据传入的模块名，获取该模块实际装载OEP位置。
+
+ - 参数1：传入模块名
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    oep = dbg.get_oep_from_name("win32project.exe")
+    print(hex(oep))
+
+    dbg.close()
+```
+
+**get_oep_from_address() 函数:** 根据传入内存地址，得到该地址模块的OEP位置。
+
+ - 参数1：传入内存地址
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    eip = dbg.get_register("eip")
+
+    oep = dbg.get_oep_from_address(eip)
+    print(hex(oep))
 
     dbg.close()
 ```
@@ -951,80 +1048,6 @@ if __name__ == "__main__":
     for i in range(0,100):
         ref = dbg.set_loger_output("hello lyshark -> {} \n".format(i))
         print(ref)
-
-    dbg.close()
-```
-
-
-
-
-
-
-
-
-
-根据地址得到模块首地址
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-
-    eip = dbg.get_register("eip")
-
-    ref = dbg.get_base_from_address(eip)
-    print("模块首地址: {}".format(hex(ref)))
-```
-
-根据名字得到模块首地址
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-
-    ref = dbg.get_base_from_address(eip)
-    print("模块首地址: {}".format(hex(ref)))
-
-    ref_base = dbg.get_base_from_name("win32project.exe")
-    print("模块首地址: {}".format(hex(ref_base)))
-
-    dbg.close()
-```
-
-根据名字和地址，获取OEP
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-
-    eip = dbg.get_register("eip")
-
-    oep = dbg.get_oep_from_name("win32project.exe")
-    print(hex(oep))
-
-    oep = dbg.get_oep_from_address(eip)
-    print(hex(oep))
-
-    dbg.close()
-```
-
-
-调试状态判断
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-
-    ref = dbg.is_debugger()
-    print(ref)
-
-    ref = dbg.is_running()
-    print(ref)
 
     dbg.close()
 ```
