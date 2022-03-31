@@ -955,3 +955,101 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
+
+
+测试功能，如下，还在开发中
+
+实现汇编功能 （直接写道内存）
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    ref = dbg.assemble_write_memory(eip,"mov eax,1")
+
+    print("是否写出: {}".format(ref))
+
+    dbg.close()
+```
+
+传入汇编代码，返回代码长度
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+
+    ref = dbg.assemble_code_size("sub esp, 0x324")
+    print(ref)
+
+    dbg.close()
+```
+
+根据地址得到模块首地址
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+
+    eip = dbg.get_register("eip")
+
+    ref = dbg.get_base_from_address(eip)
+    print("模块首地址: {}".format(hex(ref)))
+```
+
+根据名字得到模块首地址
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+
+    ref = dbg.get_base_from_address(eip)
+    print("模块首地址: {}".format(hex(ref)))
+
+    ref_base = dbg.get_base_from_name("win32project.exe")
+    print("模块首地址: {}".format(hex(ref_base)))
+
+    dbg.close()
+```
+
+根据名字和地址，获取OEP
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+
+    eip = dbg.get_register("eip")
+
+    oep = dbg.get_oep_from_name("win32project.exe")
+    print(hex(oep))
+
+    oep = dbg.get_oep_from_address(eip)
+    print(hex(oep))
+
+    dbg.close()
+```
+
+
+调试状态判断
+```Python
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+
+    ref = dbg.is_debugger()
+    print(ref)
+
+    ref = dbg.is_running()
+    print(ref)
+
+    dbg.close()
+```
