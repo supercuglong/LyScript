@@ -13,9 +13,7 @@
 <br>
 
  - 安装Python包：`pip install LyScript32==1.0.10`
- 
  - 32位插件下载：https://cdn.lyshark.com/software/LyScript32.zip
- - 
  - 64位插件下载：正在适配中...
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下，程序运行后会自动加载插件文件。
