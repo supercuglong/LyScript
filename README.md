@@ -941,7 +941,7 @@ if __name__ == "__main__":
 
  - 参数1：日志内容
 
-```Pythohn
+```Python
 from LyScript32 import MyDebug
 
 if __name__ == "__main__":
