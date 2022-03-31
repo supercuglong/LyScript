@@ -774,7 +774,132 @@ if __name__ == "__main__":
 ```
 <br>
 
-### 其他函数
+### 反汇编类
+
+**get_disasm_code() 函数:** 该函数主要用于对特定内存地址进行反汇编，传入两个参数。
+
+ - 参数1：需要反汇编的地址(十进制) 
+ - 参数2：需要向下反汇编的长度
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    print("连接状态: {}".format(connect_flag))
+
+    # 得到EIP位置
+    eip = dbg.get_register("eip")
+
+    # 反汇编前100行
+    disasm_dict = dbg.get_disasm_code(eip,100)
+
+    for ds in disasm_dict:
+        print("地址: {} 反汇编: {}".format(hex(ds.get("addr")),ds.get("opcode")))
+
+    dbg.close()
+```
+
+**get_disasm_one_code() 函数:** 在用户指定的位置读入一条汇编指令，用户可根据需要对其进行判断。
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    disasm = dbg.get_disasm_one_code(eip)
+    print("反汇编一条: {}".format(disasm))
+
+    dbg.close()
+```
+
+**get_disasm_operand_code() 函数:** 用于获取汇编指令中的操作数，例如`jmp 0x0401000`其操作数就是`0x0401000`。
+
+ - 参数1：传入内存地址（十进制）
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    opcode = dbg.get_disasm_operand_code(eip)
+    print("操作数: {}".format(hex(opcode)))
+
+    dbg.close()
+```
+
+**get_disasm_operand_size() 函数:** 用于得当前内存地址下汇编代码的机器码长度。
+
+ - 参数1：传入内存地址（十进制）
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print("EIP = {}".format(eip))
+
+    opcode = dbg.get_disasm_operand_size(eip)
+
+    print("机器码长度: {}".format(hex(opcode)))
+
+    dbg.close()
+```
+
+**assemble_write_memory() 函数:** 实现了用户传入一段正确的汇编指令，程序自动将该指令转为机器码，并写入到指定位置。
+
+ - 参数1：写出内存地址（十进制）
+ - 参数2：写出汇编指令
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    eip = dbg.get_register("eip")
+    print(eip)
+
+    ref = dbg.assemble_write_memory(eip,"mov eax,1")
+    print("是否写出: {}".format(ref))
+
+    dbg.close()
+```
+
+**assemble_code_size() 函数:** 该函数实现了用户传入一个汇编指令，自动计算出该指令占多少个字节。
+
+ - 参数1：汇编指令字符串
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    ref = dbg.assemble_code_size("sub esp, 0x324")
+    print(ref)
+
+    dbg.close()
+```
+
+<br>
+
+### 其他通用类
 
 **set_comment_notes() 函数:** 给指定位置代码增加一段注释，如下演示在eip位置增加注释。
 
@@ -829,120 +954,14 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
-<br>
-
-### 反汇编函数
-
-**get_disasm_code() 函数:** 该函数主要用于对特定内存地址进行反汇编，传入两个参数。
-
- - 参数1：需要反汇编的地址(十进制) 
- - 参数2：需要向下反汇编的长度
-
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-    print("连接状态: {}".format(connect_flag))
-
-    # 得到EIP位置
-    eip = dbg.get_register("eip")
-
-    # 反汇编前100行
-    disasm_dict = dbg.get_disasm_code(eip,100)
-
-    for ds in disasm_dict:
-        print("地址: {} 反汇编: {}".format(hex(ds.get("addr")),ds.get("opcode")))
-
-    dbg.close()
-```
-
-**get_disasm_one_code() 函数:** 在用户指定的位置读入一条汇编指令，用户可根据需要对其进行判断。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    print("EIP = {}".format(eip))
-
-    disasm = dbg.get_disasm_one_code(eip)
-    print("反汇编一条: {}".format(disasm))
-
-    dbg.close()
-```
-
-**get_disasm_operand_code() 函数:** 用于获取汇编指令中的操作数，例如`jmp 0x0401000`其操作数就是`0x0401000`。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    print("EIP = {}".format(eip))
-
-    opcode = dbg.get_disasm_operand_code(eip)
-    print("操作数: {}".format(hex(opcode)))
-
-    dbg.close()
-```
-
-**get_disasm_operand_size() 函数:** 用于得当前内存地址下汇编代码的机器码长度。
-```Python
-from LyScript32 import MyDebug
-
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    print("EIP = {}".format(eip))
-
-    opcode = dbg.get_disasm_operand_size(eip)
-
-    print("机器码长度: {}".format(hex(opcode)))
-
-    dbg.close()
-```
 
 
 
 
-测试功能，如下，还在开发中
-
-实现汇编功能 （直接写道内存）
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
-
-    eip = dbg.get_register("eip")
-    print(eip)
-
-    ref = dbg.assemble_write_memory(eip,"mov eax,1")
-
-    print("是否写出: {}".format(ref))
-
-    dbg.close()
-```
-
-传入汇编代码，返回代码长度
-```Python
-if __name__ == "__main__":
-    dbg = MyDebug()
-    connect_flag = dbg.connect()
 
 
-    ref = dbg.assemble_code_size("sub esp, 0x324")
-    print(ref)
 
-    dbg.close()
-```
+
 
 根据地址得到模块首地址
 ```Python
