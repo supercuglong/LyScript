@@ -23,7 +23,7 @@
 
 当插件加载成功后，会在日志位置看到具体的绑定信息，输出调试，插件并不会在插件栏显示：
 
-![image](https://user-images.githubusercontent.com/52789403/161061444-b67d6e68-a979-46d2-870c-8701cccdd627.png)
+![image](https://user-images.githubusercontent.com/52789403/161062658-0452fe0c-3e11-4df4-a83b-b026f74884d0.png)
 
 如果需要远程调试，则您只需要在初始化`MyDebug()`类是传入对端IP地址即可，请确保对端放行了`6589`端口，否则无法连接。
 
