@@ -711,6 +711,21 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
+**get_local_page_size() 函数:** 用于获取当前EIP所指领空下，内存pagesize分页大小。
+
+ - 无参数传递
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    size = dbg.get_local_page_size()
+    print("pagesize = {}".format(size))
+
+    dbg.close()
+```
 <br>
 
 ### 堆栈类
