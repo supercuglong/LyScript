@@ -24,7 +24,7 @@
 
 ![image](https://user-images.githubusercontent.com/52789403/161062658-0452fe0c-3e11-4df4-a83b-b026f74884d0.png)
 
-如果需要远程调试，则您只需要在初始化`MyDebug()`类是传入对端IP地址即可，请确保对端放行了`6589`端口，否则无法连接。
+如果需要远程调试，则您只需要在初始化`MyDebug()`类是传入对端IP地址即可，如果不填写参数则默认使用`127.0.0.1`地址，请确保对端放行了`6589`端口，否则无法连接。
 
 ![image](https://user-images.githubusercontent.com/52789403/161062393-df04aabb-2d70-4434-80b9-a46974bccf8a.png)
 
