@@ -11,7 +11,6 @@
   
 </div>
 
-
 安装插件:
  - 对应Python包安装 `pip install LyScript32==1.0.5` 或者 `pip install lyscript64` 安装对应包
  
@@ -51,6 +50,7 @@ if __name__ == "__main__":
 ```
 
 链接成功返回1，失败返回0
+
 <br>
 
 ### 寄存器类
