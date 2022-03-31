@@ -12,12 +12,12 @@
 </div>
 
 安装插件:
- - 对应Python包安装 `pip install LyScript32==1.0.5`
+
+ - 对应Python包安装 `pip install LyScript32`
  
  - 32位插件下载地址: 正在开发中
 
-
-插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
+插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下，程序运行后会自动加载插件文件。
 
 ![](https://img2022.cnblogs.com/blog/1379525/202203/1379525-20220327190905044-1815692787.png)
 
@@ -28,11 +28,6 @@
 如果需要远程调试，则您只需要在初始化`MyDebug()`类是传入对端IP地址即可，请确保对端放行了`6589`端口，否则无法连接。
 
 ![image](https://user-images.githubusercontent.com/52789403/161062393-df04aabb-2d70-4434-80b9-a46974bccf8a.png)
-
-
-
-
-
 
 安装好以后，你需要运行x64dbg程序并手动载入需要分析的可执行文件，然后就可以在Pycharm中编程控制它了。
 
