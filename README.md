@@ -29,7 +29,7 @@
 
 ![image](https://user-images.githubusercontent.com/52789403/161062393-df04aabb-2d70-4434-80b9-a46974bccf8a.png)
 
-安装好以后，你需要运行x64dbg程序并手动载入需要分析的可执行文件，然后我们可以通过以下方法连接到插件中与插件交互，其中`connect()`用于连接插件，连接后会创建一个持久会话知道python脚本结束连接会被断开，在此期间可调用`is_connect()`检查该链接是否还存在。
+安装好以后，你需要运行x64dbg程序并手动载入需要分析的可执行文件，然后我们可以通过`connect()`方法连接到调试器，连接后会创建一个持久会话知道python脚本结束连接会被断开，在此期间可调用`is_connect()`检查该链接是否还存在。
 ```Python
 from LyScript32 import MyDebug
 
