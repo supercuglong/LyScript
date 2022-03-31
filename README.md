@@ -12,10 +12,10 @@
 </div>
 
 安装插件:
- - 对应Python包安装 `pip install LyScript32==1.0.5` 或者 `pip install lyscript64` 安装对应包
+ - 对应Python包安装 `pip install LyScript32==1.0.5`
  
- - 32位插件下载地址: https://cdn.lyshark.com/software/LyScript32.zip
- - 64位插件下载地址: https://cdn.lyshark.com/software/LyScript64.zip
+ - 32位插件下载地址: 正在开发中
+
 
 插件下载好以后，请将该插件复制到x64dbg目录下的plugins目录下即可。
 
