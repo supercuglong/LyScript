@@ -726,6 +726,22 @@ if __name__ == "__main__":
 
     dbg.close()
 ```
+
+**get_memory_section() 函数:** 该函数主要用于获取内存映像中，当前调试程序的内存节表数据。
+
+ - 无参数传递
+ 
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+
+    ref = dbg.get_memory_section()
+    print(ref)
+    dbg.close()
+```
 <br>
 
 ### 堆栈类
