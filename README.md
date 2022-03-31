@@ -296,6 +296,21 @@ if __name__ == "__main__":
     dbg.close()
 ```
 
+**get_all_breakpoint() 函数:** 用于获取当前调试程序中，所有下过的断点信息，包括是否开启，命中次数等。
+
+ - 无参数传递
+
+```Python
+from LyScript32 import MyDebug
+
+if __name__ == "__main__":
+    dbg = MyDebug()
+    connect_flag = dbg.connect()
+    ref = dbg.get_all_breakpoint()
+    print(ref)
+    dbg.close()
+```
+
 **set_hardware_breakpoint() 函数:** 用于设置一个硬件断点，硬件断点在32位系统中最多设置4个。
 
  - 参数1：内存地址（十进制）
