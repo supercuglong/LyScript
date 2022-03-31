@@ -972,11 +972,6 @@ class MyDebug(object):
             return False
         return False
 
-    import socket
-import struct
-import time
-from ctypes import *
-
 class MyStruct64(Structure):
     _pack_ = 1
     _fields_ = [
