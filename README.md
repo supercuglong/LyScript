@@ -27,6 +27,7 @@
 
 如果需要远程调试，则您只需要在初始化`MyDebug()`类是传入对端IP地址即可，请确保对端放行了`6589`端口，否则无法连接。
 
+![image](https://user-images.githubusercontent.com/52789403/161062393-df04aabb-2d70-4434-80b9-a46974bccf8a.png)
 
 
 
